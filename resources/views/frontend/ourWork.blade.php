@@ -33,7 +33,7 @@
                 <ul class="category-tabs">
                     <li class="filter-btn active" data-filter="all">All</li>
                     @foreach ($workCategory as $category)
-                        <li class="filter-btn" data-filter="{{ $category->slug }}">{{ $category->name }}</li>
+                        <li class="filter-btn" data-filter="work_{{ $category->id }}">{{ $category->name }}</li>
                     @endforeach
 
                 </ul>
@@ -41,7 +41,17 @@
 
             <div class="row portfolio-grid g-4  gy-lg-5 gy-md-4 gy-3 mrgn_60b">
                  @foreach ($work as $data)
-                    <div class="col-md-6 col-12 portfolio-col" data-category="all {{ $data->portfolioCategory->slug }}">
+                <?php
+                  $category_id = explode("|", $data->portfolio_category_id);
+
+                    $newArray = array_map(function($value) {
+                        return "work_" . $value;
+                    }, $category_id);
+
+                    $string = implode(" ", $newArray);
+
+                 ?>
+                    <div class="col-md-6 col-12 portfolio-col" data-category="all {{ $string }} ">
                           <a href="{{ route('portfolio-detail', $data->slug) }}">
                             <div class="portfolio-card mx-auto">
                                 <figure class="img-box">

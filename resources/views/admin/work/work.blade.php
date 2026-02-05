@@ -5,6 +5,8 @@
 @parent :: {!! 'Work' !!}
 @stop
 @section('styles')
+ {{-- <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css" /> --}}
+ <link rel="stylesheet" href="{!! asset('assets/admin/vendor/libs/select2/select2.css') !!}"/>
 <link rel="stylesheet" href="{!! asset('assets/admin/vendor/libs/dropzone/dropzone2.css') !!}"/>
 @stop
 {{-- Content --}}
@@ -22,10 +24,10 @@
 
             <div class="card-body">
                 @include('admin.includes.notifications')
-
+                <?php $sele = []; ?>
 
                 @if(isset($work))
-
+                 <?php $sele = explode('|', $work->portfolio_category_id); ?>
                 {!! html()->modelForm($work, 'PATCH', route('work.update', $work->id))->id('work-form')->acceptsFiles()->open() !!}
                 @else
                 {!! html()->form('POST', route('work.store'))->id('work-form')->acceptsFiles()->open() !!}
@@ -34,11 +36,24 @@
                 <div class="mb-3 mt-3">
 
                     {!! html()->label('Work Category', 'portfolio_category_id')->class('form-label') !!}
-                    {{ html()->select('portfolio_category_id', $categories, old('portfolio_category_id'))->class('form-control')->placeholder('Select Category') }}
+                    {{-- {{ html()->select('portfolio_category_id[]', $categories, $sele)->class('form-control select2 form-select')->attribute('multiple','multiple') }} --}}
+                    {{ html()->select('portfolio_category_id[]',$categories,old('portfolio_category_id', (array) $sele))->class('form-control select2 form-select')->multiple() }}
+
                     @error('portfolio_category_id')
                         <span class="error-message">{!! $message !!} *</span>
                     @enderror
-                </div>
+                   {{-- <div class="col-md-6 mb-4">
+                          <label for="select2Primary" class="form-label">Primary</label>
+                          <div class="select2-primary">
+                            <select id="" class="select2 form-select" multiple>
+                              <option value="1" selected>Option1</option>
+                              <option value="2" selected>Option2</option>
+                              <option value="3">Option3</option>
+                              <option value="4">Option4</option>
+                            </select>
+                          </div>
+                        </div>
+                </div> --}}
 
                 <div class="mb-3 mt-3">
 
@@ -188,6 +203,8 @@
 @stop
 
 @section('scripts')
+
+ <script src="{!! asset('assets/admin/vendor/libs/select2/select2.js') !!}"></script>
  <script src="{!! asset('assets/admin/js/ckeditor-config.js') !!}"></script>
    {{-- For DropZone Js --}}
     <script src="{!! asset('assets/admin/vendor/libs/dropzone/dropzone2.js') !!}"></script>
@@ -276,5 +293,10 @@
             });
         });
         // End For Drop Zone
+
+$('.select2').select2({
+ // placeholder: 'Select an option'
+});
+
  </script>
 @stop

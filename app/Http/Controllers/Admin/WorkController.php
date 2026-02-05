@@ -100,9 +100,12 @@ public function edit(Request $request, $id){
 
 public function update(Request $request, $id){
 
+
+
     $request->validate([
         'title' => ['required', Rule::unique('portfolio', 'title')->ignore($id)],
-        'portfolio_category_id' => ['required'],
+        'portfolio_category_id' =>  ['required', 'array', 'min:1'],
+        //'portfolio_category_id' => ['required'],
         'short_description' => ['required'],
         'description' => ['required'],
         'image' => ['file', 'image', 'mimes:jpeg,jpg,png,webp'],
@@ -116,8 +119,9 @@ public function update(Request $request, $id){
         ]);
 
     $data = $request->all();
-    try{
 
+    try{
+        $data['portfolio_category_id'] = implode("|", $data['portfolio_category_id']);
 
         $portfolio = Portfolio::find($id);
 
