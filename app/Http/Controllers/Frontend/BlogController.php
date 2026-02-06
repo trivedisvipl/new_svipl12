@@ -96,23 +96,20 @@ class BlogController extends Controller {
 
         if($blog) {
 
+            //Metadata
+            if($blog->meta_title){
+                \Config::set('settings.title', $blog->meta_title);
+            }
+            if($blog->meta_keywords) {
+                \Config::set('settings.metaKeywords', $blog->meta_keywords);
+            }
+            if($blog->meta_description) {
+                \Config::set('settings.metaDescription', $blog->meta_description);
+            }
+            if($blog->image) {
+                \Config::set('settings.imgurl', BLOG_IMAGE_ROOT.$blog->image);
+            }
 
-            // $banner = Metadata::active()->where('slug','blog')->first();
-
-
-            //  //Metadata
-            //  if($blog->title){
-            //     \Config::set('settings.title', $blog->title);
-            // }
-            // if($banner->meta_keywords) {
-            //     \Config::set('settings.metaKeywords', $banner->meta_keywords);
-            // }
-            // if($blog->description) {
-            //     \Config::set('settings.metaDescription', Common::shorteningString(trim(preg_replace('/\s+/', ' ', strip_tags($blog->description))),100));
-            // }
-            // if($blog->image) {
-            //     \Config::set('settings.imgurl', BLOG_IMAGE_ROOT.$blog->image);
-            // }
 
             return view('frontend.blogDetail', compact('blog'));
         }else{

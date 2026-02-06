@@ -54,6 +54,20 @@ public function portfolioDetail($slug){
 
         $work = Portfolio::active()->where('slug',$slug)->firstOrFail();
 
+        //Metadata
+            if($work->meta_title){
+                \Config::set('settings.title', $work->meta_title);
+            }
+            if($work->meta_keywords) {
+                \Config::set('settings.metaKeywords', $work->meta_keywords);
+            }
+            if($work->meta_description) {
+                \Config::set('settings.metaDescription', $work->meta_description);
+            }
+            if($work->image) {
+                \Config::set('settings.imgurl', WORK_IMAGE_ROOT.$work->image);
+            }
+
 
         return view('frontend.workDetail',compact('work'));
     } catch (\Exception $ex) {

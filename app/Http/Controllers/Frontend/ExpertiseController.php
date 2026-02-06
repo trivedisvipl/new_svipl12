@@ -21,21 +21,23 @@ class ExpertiseController extends Controller {
             if($expertise) {
 
 
-            //$banner = Metadata::active()->where('slug','blog')->first();
+           $settings = Setting::where('page','portfolio')->pluck('value','key')->toArray();
 
-            // //Metadata
-            // if($banner->meta_title){
-            //     \Config::set('settings.title', $banner->meta_title);
-            // }
-            // if($banner->meta_keywords) {
-            //     \Config::set('settings.metaKeywords', $banner->meta_keywords);
-            // }
-            // if($banner->meta_description) {
-            //     \Config::set('settings.metaDescription', Common::shorteningString($banner->meta_description,100));
-            // }
-            // if($banner->banner_image) {
-            //     \Config::set('settings.imgurl', BANNER_IMAGE_ROOT.$banner->banner_image);
-            // }
+            if(isset($settings)){
+                //Metadata
+                if($settings['meta_title']){
+                    \Config::set('settings.title', $settings['meta_title']);
+                }
+                if($settings['meta_keywords']) {
+                    \Config::set('settings.metaKeywords', $settings['meta_keywords']);
+                }
+                if($settings['meta_description']) {
+                    \Config::set('settings.metaDescription', $settings['meta_description']);
+                }
+                if($settings['meta_image']) {
+                    \Config::set('settings.imgurl', SETTING_IMAGE_ROOT.$settings['meta_image']);
+                }
+            }
 
 
                 return view('frontend.expertise', compact('expertise'));
@@ -64,23 +66,21 @@ class ExpertiseController extends Controller {
 
         if($expertise) {
 
-            $settings = Setting::where('page','portfolio')->pluck('value','key')->toArray();
 
-            if(isset($settings)){
-                //Metadata
-                if($settings['meta_title']){
-                    \Config::set('settings.title', $settings['meta_title']);
-                }
-                if($settings['meta_keywords']) {
-                    \Config::set('settings.metaKeywords', $settings['meta_keywords']);
-                }
-                if($settings['meta_description']) {
-                    \Config::set('settings.metaDescription', $settings['meta_description']);
-                }
-                if($settings['meta_image']) {
-                    \Config::set('settings.imgurl', SETTING_IMAGE_ROOT.$settings['meta_image']);
-                }
+          //Metadata
+            if($expertise->meta_title){
+                \Config::set('settings.title', $expertise->meta_title);
             }
+            if($expertise->meta_keywords) {
+                \Config::set('settings.metaKeywords', $expertise->meta_keywords);
+            }
+            if($expertise->meta_description) {
+                \Config::set('settings.metaDescription', $expertise->meta_description);
+            }
+            if($expertise->image) {
+                \Config::set('settings.imgurl', EXPERTIES_IMAGE_ROOT.$expertise->image);
+            }
+
 
             return view('frontend.expertiseDetail', compact('expertise'));
         }else{
