@@ -23,7 +23,7 @@
                                 {{ $data->description }}
                             </p>
                             <div class="pd_5b">
-                                <a href="javascript:;" type="button" class="btn black-btn">
+                                <a href="{!! route('contact') !!}" type="button" class="btn black-btn">
                                     Contact Us
                                 </a>
                             </div>
@@ -64,7 +64,7 @@
                         {!! $settings['about_description'] !!}
                     </div>
                     <div class="pd_5b">
-                        <a href="javascript:;" type="button" class="btn black-btn">
+                        <a href="{!! route('why-us') !!}" type="button" class="btn black-btn">
                             Read More
                         </a>
                     </div>

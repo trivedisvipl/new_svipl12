@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\WorkCategoriesController;
 use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\ContactController AS AdminContactController;
 use App\Http\Controllers\Admin\CareersController AS AdminCareersController;
 
@@ -62,9 +63,17 @@ Route::group(array('prefix' => ADMIN_SLUG), function () {
 
         Route::get('dashboard',[DashboardController::class,'index'])->name(ADMIN_SLUG . '.dashboard');
 
+        Route::get('profile',[DashboardController::class,'getProfile'])->name(ADMIN_SLUG . '.profile');
+        Route::post('profile', [DashboardController::class,'storeProfile'])->name(ADMIN_SLUG . '.profile.store');
+
+         Route::get('password',[DashboardController::class,'getPassword'])->name(ADMIN_SLUG . '.password');
+        Route::post('password', [DashboardController::class,'storePassword'])->name(ADMIN_SLUG . '.password.change');
 
         Route::post('slider/changeStatus', [SliderController::class,'changeStatus'])->name("slider.changeStatus");
         Route::resource('slider', SliderController::class);
+
+        Route::post('team/changeStatus', [TeamController::class,'changeStatus'])->name("team.changeStatus");
+        Route::resource('team', TeamController::class);
 
 
         Route::post('experties/changeStatus', [ExpertiseController::class,'changeStatus'])->name("experties.changeStatus");
@@ -137,6 +146,7 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/why-us',[HomeController::class,'why'])->name('why-us');
 Route::get('/mission-vision',[HomeController::class,'mission'])->name('mission-vision');
 Route::get('/our-process',[HomeController::class,'process'])->name('our-process');
+Route::get('/team',[HomeController::class,'team'])->name('team');
 
 
 Route::get( '/portfolio',[FrontendWorkController::class,'index'])->name('our-portfolio');
@@ -175,7 +185,7 @@ defined('PROFILE_IMAGE') or define('PROFILE_IMAGE', asset('storage/profile.png')
 
 defined('EXPERTIES_IMAGE_PATH') or define('EXPERTIES_IMAGE_PATH', storage_path('app/public/experties/'));
 defined('EXPERTIES_IMAGE_ROOT') or define('EXPERTIES_IMAGE_ROOT', asset('storage/experties') . '/');
-defined('EXPERTIES_IMAGE') or define('EXPERTIES_IMAGE', asset('storage/experties/slider.png'));
+defined('EXPERTIES_IMAGE') or define('EXPERTIES_IMAGE', asset('storage/experties/experties.png'));
 
 
 defined('CLIENT_IMAGE_PATH') or define('CLIENT_IMAGE_PATH', storage_path('app/public/client/'));
@@ -190,6 +200,11 @@ defined('BLOG_IMAGE') or define('BLOG_IMAGE', asset('storage/blog/blog.png'));
 defined('WORK_IMAGE_PATH') or define('WORK_IMAGE_PATH', storage_path('app/public/work/'));
 defined('WORK_IMAGE_ROOT') or define('WORK_IMAGE_ROOT', asset('storage/work') . '/');
 defined('WORK_IMAGE') or define('WORK_IMAGE', asset('storage/work/work.png'));
+
+defined('TEAM_IMAGE_PATH') or define('TEAM_IMAGE_PATH', storage_path('app/public/team/'));
+defined('TEAM_IMAGE_ROOT') or define('TEAM_IMAGE_ROOT', asset('storage/team') . '/');
+defined('TEAM_IMAGE') or define('TEAM_IMAGE', asset('storage/team/team.png'));
+
 
 
 defined('CAREER_PDF_PATH') or define('CAREER_PDF_PATH', storage_path('app/public/career/'));

@@ -18,7 +18,7 @@ id="layout-navbar"
     <li class="nav-item navbar-dropdown dropdown-user dropdown">
         <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
         <div class="avatar avatar-online">
-            <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+            <img src="{{ SETTING_IMAGE_ROOT.Auth::guard('admin')->user()->image }}" alt class="h-auto rounded-circle" />
         </div>
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
@@ -27,7 +27,7 @@ id="layout-navbar"
             <div class="d-flex">
                 <div class="flex-shrink-0 me-3">
                 <div class="avatar avatar-online">
-                    <img src="../../assets/img/avatars/1.png" alt class="h-auto rounded-circle" />
+                    <img src="{{ SETTING_IMAGE_ROOT.Auth::guard('admin')->user()->image }}" alt class="h-auto rounded-circle" />
                 </div>
                 </div>
                 <div class="flex-grow-1">
@@ -41,13 +41,13 @@ id="layout-navbar"
             <div class="dropdown-divider"></div>
         </li>
         <li>
-            <a class="dropdown-item" href="pages-profile-user.html">
+            <a class="dropdown-item" href="{!! route(ADMIN_SLUG . '.profile') !!}">
             <i class="ti ti-user-check me-2 ti-sm"></i>
             <span class="align-middle">My Profile</span>
             </a>
         </li>
         <li>
-            <a class="dropdown-item" href="pages-faq.html">
+            <a class="dropdown-item" href="{!! route(ADMIN_SLUG . '.password.change') !!}">
             <i class="ti ti-lock me-2 ti-sm"></i>
             <span class="align-middle">Change Password</span>
             </a>

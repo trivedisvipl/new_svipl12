@@ -23,6 +23,12 @@
               <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
+        <li class="menu-item {!! (Request::is(ADMIN_SLUG.'/team*') ? 'active' : '') !!}">
+            <a href="{!! route('team.index') !!}" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa fa-star"></i>
+              <div data-i18n="Our Team">Our Team</div>
+            </a>
+        </li>
         <li class="menu-item {!! (Request::is(ADMIN_SLUG.'/experties') ? 'active' : '') !!}">
             <a href="{!!URL::to(ADMIN_SLUG.'/experties')!!}" class="menu-link">
                 <i class="menu-icon tf-icons fa fa-dashboard"></i>

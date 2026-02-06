@@ -22,35 +22,34 @@
 
             <div class="card-body">
                 @include('admin.includes.notifications')
+                 {!! html()->modelForm([], 'POST', route(ADMIN_SLUG . '.password.change'))
+                    ->id('password-form')
+                    ->attribute('enctype', 'multipart/form-data')
+                    ->open() !!}
 
-                {!! Form::open(['route' => ADMIN_SLUG.'.password.change', 'id' => 'change-password-form']) !!}
+                <div class="mb-3 mt-3">
+                    {!! html()->label('Password', 'password')->class('form-label') !!}
+                    {!! html()->password('password')->class('form-control') !!}
 
+                   @error('old_password')
+                        <span class="error-message">{!! $message !!} *</span>
+                    @enderror
+                </div>
+                  <div class="mb-3 mt-3">
+                    {!! html()->label('Confirm password', 'password_confirmation')->class('form-label') !!}
+                    {!! html()->password('password_confirmation')->class('form-control') !!}
 
-                    <div class="mb-3">
-                        {!! Form::label('password','Old Password',array('class'=>'form-label')) !!}
-                        {!! Form::password('old_password', array('class'=>'form-control','id' => 'old_password')) !!}
-                    </div>
+                   @error('password_confirmation')
+                        <span class="error-message">{!! $message !!} *</span>
+                    @enderror
+                </div>
 
-                    <div class="mb-3">
-                        {!! Form::label('password','New Password',array('class'=>'form-label')) !!}
-                        {!! Form::password('password', array('class'=>'form-control','id' => 'password')) !!}
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    </div>
+                <div class="mb-3">
 
-                    <div class="mb-3">
-                        {!! Form::label('cpassword','Confirm Password:',array('class'=>'form-label')) !!}
-                        {!! Form::password('password_confirmation', array('class'=>'form-control','id' => 'password_confirmation')) !!}
-                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                    </div>
+                    {!! html()->submit('Submit')->class('btn btn-primary') !!}
 
-                    <div class="mb-3">
-
-                        {!! Form::Button('Submit',array('class'=>'btn btn-primary ','type'=>'submit')) !!}
-                        <a href="{!! URL(ADMIN_SLUG.'/dashboard') !!}" class="btn btn-label-secondary waves-effect">Cancel</a>
-                    </div>
-
-                {!! Form::close()!!}
-
+                </div>
+                {{ html()->form()->close() }}
 
             </div>
           </div>

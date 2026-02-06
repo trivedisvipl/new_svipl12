@@ -70,7 +70,7 @@ if($homeHeader['header_logo']){
                                 <li><a class="dropdown-item" href="{!! route('why-us') !!}">Why Choose</a></li>
                                 <li><a class="dropdown-item" href="{!! route('mission-vision') !!}">Mission</a></li>
                                 <li><a class="dropdown-item" href="{!! route('our-process') !!}">Development Process</a></li>
-                                <li><a class="dropdown-item" href="#">Our Team</a></li>
+                                <li><a class="dropdown-item" href="{!! route('team') !!}">Our Team</a></li>
                             </ul>
                         </li>
 
@@ -122,15 +122,15 @@ if($homeHeader['header_logo']){
                         <li class="nav-item">
                             <a href="{!! route('home') !!}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
                         </li>
-                        {{-- <li class="nav-item dropdown">
-                            <a href="javascript:;" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+                        <li class="nav-item dropdown">
+                            <a href="javascript:;" class="nav-link {{ request()->routeIs('why-us') ||  request()->routeIs('mission-vision') ||  request()->routeIs('our-process') ||  request()->routeIs('team') ? 'active' : '' }}" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
                             <ul class="dropdown-menu position-relative">
-                                <li><a class="dropdown-item" href="{!! route('why-choose') !!}">Why choose</a></li>
+                                <li><a class="dropdown-item" href="{!! route('why-us') !!}">Why choose</a></li>
                                 <li><a class="dropdown-item" href="{!! route('mission-vision') !!}">Our Mission & Vision</a></li>
-                                <li><a class="dropdown-item" href="{!! route('development-process') !!}">Devlopment Process</a></li>
-                                <li><a class="dropdown-item" href="{!! route('our-team') !!}">Our Team</a></li>
+                                <li><a class="dropdown-item" href="{!! route('our-process') !!}">Devlopment Process</a></li>
+                                <li><a class="dropdown-item" href="{!! route('team') !!}">Our Team</a></li>
                             </ul>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
                             <a href="{!! route('our-portfolio') !!}" class="nav-link {{ request()->routeIs('our-portfolio') ? 'active' : '' }}">Portfolio</a>
                         </li>

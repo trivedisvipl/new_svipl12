@@ -545,6 +545,8 @@ p {
     padding-left: 30px;
 }
 .blog-slider .item {
+    max-width: 380px;
+    width: 100%;
     margin-right: 30px;
 }
 .blog-card {
@@ -560,6 +562,7 @@ p {
     filter: drop-shadow(0px 4px 15px rgba(0,0,0,20%));
 }
 .blog-short-details {
+    min-height: 287px;
     padding: 20px;
 }
 .blog-short-details .blog-tag {
@@ -989,8 +992,8 @@ hr.footer-divider {
     height: 230px;
 }
 .team-card .team-img-box figure img{
-    mask-image: url("/assets/images/shapes/1.png");
-    --webkit-mask-image: url("/assets/images/shapes/1.png");
+    mask-image: url("../images/shapes/1.png");
+    --webkit-mask-image: url("../images/shapes/1.png");
     mask-position: center;
     --webkit-mask-position: center;
     mask-repeat: no-repeat;
@@ -1277,7 +1280,7 @@ hr.footer-divider {
     filter: drop-shadow(0px 4px 15px rgba(0,0,0,15%));
 }
 .blog-img img {
-    max-height: 530px;
+    max-height: 230px;
     border-radius: 15px;
     filter: drop-shadow(0px 4px 30px rgba(255, 107, 44, 30%));
     object-fit: cover;
