@@ -736,5 +736,42 @@ class SettingController extends Controller
          return redirect()->back()->with("success_message", "Portfolio Page Content Updated Successfully.")->with('portfolio', $portfolio);
     }
 
+      public function getTeam()
+    {
+
+        $team = Setting::where('page','team')->pluck('value','key')->toArray();
+
+        return view('admin.setting.team',compact('team'));
+
+    }
+
+    public function storeTeam(Request $request)
+    {
+
+        $data = $request->all();
+
+
+         $old_contain = Setting::where('page','team');
+
+          if ($request->hasFile('meta_image')) {
+            $logo = $old_contain->where('key', 'meta_image')->first();
+            $logo = $logo ? $logo->value : null;
+            if ($request->file('meta_image')->isValid()) {
+                $filename = Common::uploadFile($request->file('meta_image'),SETTING_IMAGE_PATH,$logo);
+                $data['meta_image'] = $filename;
+            } else {
+                $data['meta_image'] = null;
+                throw new \Exception("The meta_image is not valid.");
+            }
+
+        }
+      foreach ($data as $key => $val) {
+            Setting::updateOrCreate(['page' => 'team','key' => $key],['value' => $val]);
+        }
+
+        $team = Setting::where('page','team')->pluck('value','key')->toArray();
+
+         return redirect()->back()->with("success_message", "Team Page Content Updated Successfully.")->with('team',  $team);
+    }
 
 }

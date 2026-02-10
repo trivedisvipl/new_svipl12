@@ -132,6 +132,9 @@ Route::group(array('prefix' => ADMIN_SLUG), function () {
         Route::get('setting/portfolio', [SettingController::class,'getPortfolio'])->name("setting.portfolio");
         Route::post('setting/portfolio', [SettingController::class,'storePortfolio'])->name("setting.portfolio.store");
 
+        Route::get('setting/team', [SettingController::class,'getTeam'])->name("setting.team");
+        Route::post('setting/team', [SettingController::class,'storeTeam'])->name("setting.team.store");
+
 
 
 
