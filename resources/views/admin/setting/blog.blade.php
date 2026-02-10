@@ -26,9 +26,6 @@
                     ->id('blog-form')
                     ->attribute('enctype', 'multipart/form-data')
                     ->open() !!}
-
-
-
                 <h5 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span> Metadata</h5>
                 <div class="mb-3 mt-3">
                     {!! html()->label('Meta Title', 'meta_title')->class('form-label') !!}

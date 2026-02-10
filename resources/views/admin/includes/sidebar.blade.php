@@ -133,6 +133,11 @@
                   <div data-i18n="Our Process ">Our Process </div>
                 </a>
               </li>
+               <li class="menu-item {!! (request()->routeIs('setting.team') ? 'active' : '') !!}">
+                <a href="{!! route('setting.team') !!}" class="menu-link">
+                  <div data-i18n="Team">Team</div>
+                </a>
+              </li>
                <li class="menu-item {!! (request()->routeIs('setting.portfolio') ? 'active' : '') !!}">
                 <a href="{!! route('setting.portfolio') !!}" class="menu-link">
                   <div data-i18n="Portfolio">Portfolio</div>
