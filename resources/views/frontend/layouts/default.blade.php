@@ -20,7 +20,7 @@
 
 
   <!-- Favicon -->
-     <link rel="icon" type="image/x-icon" href="{!! asset('assets/frontend/img/favicon.png') !!}" />
+     <link rel="icon" type="image/x-icon" href="{!! asset('assets/frontend/images/favicon.ico') !!}" />
     <link rel="stylesheet" href="{!! asset('assets/frontend/css/bootstrap.min.css') !!}">
 
     <link rel="stylesheet" href="{!! asset('assets/frontend/css/bootstrap.min.css') !!}">
