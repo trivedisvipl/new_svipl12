@@ -97,7 +97,7 @@
 
                             </div>
                             <div class="col-md-6 col-12">
-                                  {!! html()->file('resume')->class('form-control') !!}
+                                  {!! html()->file('resume')->class('form-control')->accept("application/pdf") !!}
                                 {{-- <input type="file" class="form-control" id="inputGroupFile01"> --}}
                             </div>
                             <div class="col-12">

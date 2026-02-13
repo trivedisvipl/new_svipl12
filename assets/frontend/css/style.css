@@ -1527,3 +1527,13 @@ hr.footer-divider {
     color: var(--grey-2);
     font-size: 20px;
 }
+
+
+.alert-closr {
+  position: absolute;
+  right: 20px;
+  box-shadow: none;
+  border: none;
+  background-color: none;
+  background: none;
+}

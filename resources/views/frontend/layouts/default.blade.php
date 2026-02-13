@@ -60,6 +60,10 @@
     <script src="{!! asset('assets/frontend/js/script.js') !!}"></script>
     <script>
         AOS.init();
+
+        $(".close").click(function(){
+            $(this).parent().addClass('d-none');
+        });
     </script>
 
     @yield('scripts')

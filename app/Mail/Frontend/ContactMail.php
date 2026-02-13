@@ -35,7 +35,7 @@ class ContactMail extends Mailable
      */
     public function build(){
 
-        $subject = 'S-Pure Contact';
+        $subject = 'Svipl Contact';
 
         return $this->view('frontend.email.Contact')->subject($subject)->from(config('settings.fromEmail'));
 

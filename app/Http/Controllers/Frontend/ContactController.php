@@ -21,7 +21,8 @@ class ContactController extends Controller
         $request->validate([
             'name' => ['required'],
             'email' => ['required','email'],
-            'phone' => ['numeric'],
+            #'phone' => ['numeric'],
+            'phone' => ['required','regex:/^\+?[0-9\s\-]{10,15}$/'],
            // 'g-recaptcha-response' => ['required', new ReCaptcha('submitContact')]
            ],[
             'name.required' => "The Your Name field is required",

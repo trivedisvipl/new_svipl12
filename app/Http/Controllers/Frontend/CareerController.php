@@ -28,7 +28,8 @@ class CareerController extends Controller
               $request->validate([
                   'name' => ['required'],
                 'email' => ['required','email'],
-                'phone' => ['required','numeric'],
+               # 'phone' => ['required','numeric'],
+                'phone' => ['required','regex:/^\+?[0-9\s\-]{10,15}$/'],
                 'position' => ['required'],
                 'skills' => ['required'],
                 'notice_period' => ['required'],
@@ -68,7 +69,8 @@ class CareerController extends Controller
             $career =  Career::create($data);
             if($career){
                 //send Career enquiry mail to admin
-                //Mail::to(config('settings.toEmail'))->send(new CareerMail($career));
+
+                Mail::to(config('settings.toEmail'))->send(new CareerMail($career));
 
             }
             return redirect()->back()->with("success_message", "Thank you for applying.");
