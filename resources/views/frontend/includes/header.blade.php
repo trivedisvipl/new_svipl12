@@ -63,7 +63,7 @@ if($homeHeader['header_logo']){
                             <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" aria-current="page" href="{!! route('home') !!}">Home</a>
                         </li>
                         <li class="nav-item has-dropdown">
-                            <a class="nav-link active" href="#" role="button">
+                            <a class="nav-link {{ request()->routeIs('why-us') ||  request()->routeIs('mission-vision') ||  request()->routeIs('our-process') ||  request()->routeIs('team') ? 'active' : '' }}" href="#" role="button">
                                 About Us
                             </a>
                             <ul class="dropdown-panel">
