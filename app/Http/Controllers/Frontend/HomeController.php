@@ -30,7 +30,7 @@ class HomeController extends Controller
 
              $slider = Slider::active()->orderByDesc('id')->get();
              $experties = Expertise::active()->inRandomOrder()->limit(3)->get();
-             $clients = Client::active()->orderByDesc('id')->get();
+             $clients = Client::active()->orderBy('position')->get();
              $testimonials = Testimonials::active()->orderByDesc('id')->get();
              $blog = Blog::active()->orderByDesc('id')->get();
              $settings = Setting::where('page','home')->pluck('value','key')->toArray();

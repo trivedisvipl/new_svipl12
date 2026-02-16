@@ -83,6 +83,10 @@ Route::group(array('prefix' => ADMIN_SLUG), function () {
         Route::resource('testimonials', TestimonialsController::class);
 
         Route::post('clients/changeStatus', [ClientController::class,'changeStatus'])->name("clients.changeStatus");
+        Route::post('clients/reorder', [ClientController::class, 'reorder'])
+    ->name('clients.reorder');
+
+
         Route::resource('clients', ClientController::class);
 
         Route::post('blogcategories/changeStatus', [BlogCategoriesController::class,'changeStatus'])->name("blogcategories.changeStatus");

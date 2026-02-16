@@ -64,11 +64,15 @@ class ClientDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('client-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(0);
+        ->setTableId('client-table')
+        ->columns($this->getColumns())
+        ->minifiedAjax()
+        ->parameters([
+            'rowReorder' =>true,
+
+            'order' => [[0, 'asc']],
+        ]);
+
     }
 
     /**
@@ -77,12 +81,14 @@ class ClientDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-
+              Column::make('position')->hidden(true)->searchable(false),
             Column::make('id')->hidden(true)->searchable(false),
-            Column::make('name')->addClass('text-center'),
-             Column::computed('image')->addClass('text-center')->orderable(false)->searchable(false),
+
+            Column::make('name')->addClass('text-center reorder'),
+            Column::computed('image')->addClass('text-center')->orderable(false)->searchable(false),
             Column::computed('status')->addClass('text-center')->orderable(false)->searchable(false),
             Column::computed('action')->addClass('text-center')->orderable(false)->searchable(false),
+
         ];
     }
 

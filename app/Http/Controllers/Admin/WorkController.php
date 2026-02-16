@@ -37,7 +37,8 @@ public function store(Request $request){
 
        $request->validate([
         'title' => ['required', Rule::unique('portfolio', 'title')],
-        'portfolio_category_id' => ['required'],
+        #'portfolio_category_id' => ['required'],
+        'portfolio_category_id' =>  ['required', 'array', 'min:1'],
         'short_description' => ['required'],
         'description' => ['required'],
         'image' => ['required','file', 'image', 'mimes:jpeg,jpg,png,webp'],
@@ -53,6 +54,7 @@ public function store(Request $request){
     try{
 
         $data['slug'] = Str::slug($data['title']);
+         $data['portfolio_category_id'] = implode("|", $data['portfolio_category_id']);
 
         $work = Portfolio::create($data);
 

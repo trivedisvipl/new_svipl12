@@ -43,7 +43,12 @@ public function store(Request $request){
     $data = $request->all();
 
     try{
-
+        $positionOrder = Client::select('position')->max('position');
+        if($positionOrder){
+           $data['position'] = $positionOrder +1;
+        }else{
+                $data['position'] = 1;
+        }
         $client = Client::create($data);
 
         if ($request->file('image')->isValid()) {
@@ -164,4 +169,34 @@ public function changeStatus(Request $request){
     return response()->json($response);
 
 }
+
+public function reorder(Request $request)
+{
+
+ $response = ['success' => false, 'message' => ''];
+    try{
+        $data = $request->all();
+       /// dd($data);
+
+        if(isset($data['order'])){
+
+
+            foreach ($data['order'] as $item) {
+                Client::where('id', $item['id'])
+                    ->update(['position' => $item['position']]);
+            }
+        }
+
+
+        $response['success'] = true;
+        $response['message'] = 'Order changed successfully!';
+
+    } catch (\Exception $ex) {
+        $response['message'] = "Something went wrong !";
+    }
+
+    return response()->json($response);
+
+    }
+
 }
