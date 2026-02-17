@@ -44,7 +44,7 @@ $('.testimonials-slider').owlCarousel({
     navText: ["<i class='bi bi-arrow-left-circle'></i>","<i class='bi bi-arrow-right-circle'></i>"],
 });
 $('.client-slider').owlCarousel({
-    loop:true,
+    loop:false,
     margin:15,
     nav:false,
     dots:false,
@@ -84,7 +84,7 @@ $('.blog-slider').slick({
             breakpoint: 480,
             settings: {
                 slidesToShow: 1,
-                slidesToScroll: 1,                
+                slidesToScroll: 1,
                 centerPadding : '0px',
                 speed: 3000,
                 autoplaySpeed: 1.300,
