@@ -118,7 +118,7 @@
     </section>
     <!-- End Expertise Section -->
      <!-- Achieved Section -->
-    <section class="achived-section"  data-aos="fade-up-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
+    <section class="achived-section overflow-clip"  data-aos="fade-up-right" data-aos-offset="300" data-aos-easing="ease-in-sine">
         <div class="orange-square-left">
             <h3 class="d-lg-block d-none">What have we <br> Achieved so far</h3>
         </div>

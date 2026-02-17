@@ -199,6 +199,7 @@
     }
     .blog-slider .item {
         margin: 0 10px;
+        max-width: 340px;
     }
     .blog-card {
         max-width: 340px;

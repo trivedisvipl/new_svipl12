@@ -1,7 +1,7 @@
 @extends('frontend.layouts.default')
 {{-- Web site Title --}}
 @section('title')
-    @parent :: {!! 'Why Us' !!}
+    @parent :: {!! 'About' !!}
 @stop
 @section('styles')
 @stop

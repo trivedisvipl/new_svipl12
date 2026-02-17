@@ -12,6 +12,7 @@ if($homeHeader['header_logo']){
 
    <!-- Header Section -->
     <header class="main-header">
+        @if(request()->routeIs('home'))
         <div class="top-header">
             <div class="container h-100">
                 <div class="row align-items-center h-100">
@@ -50,6 +51,7 @@ if($homeHeader['header_logo']){
                 </div>
             </div>
         </div>
+        @endif
         <div class="main-header-nav  animate__animated slideIn">
             <div class="header-main">
                 <div class="logo-box">
