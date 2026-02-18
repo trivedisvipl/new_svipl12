@@ -8,7 +8,7 @@
 {{-- Content --}}
 @section('content')
 
-  <!-- Breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="container nav-breadcrumb-section">
         <nav aria-label="breadcrumb" class="font-20">
             <ol class="breadcrumb mb-0">
@@ -32,56 +32,59 @@
         </div>
         <div class="container">
             <div class="row gy-lg-5 gy-4">
-                <?php $designClass = ['first','two','three','four','five','six','seven','eight'];
-                        $i=0;
+                <?php $designClass = ['first', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+                $i = 0;
                 ?>
                 @foreach ($teams as $team)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                        <div class="team-card {!! $designClass[$i] !!}">
+                            <div class="team-img-box d-flex justify-content-center align-items-center mb-2">
+                                <figure class="mask-image w-100 h-100 mb-0">
+                                    @if (file_exists(TEAM_IMAGE_PATH . $team->image))
+                                        <img src="{{ TEAM_IMAGE_ROOT . $team->image }}" alt=""
+                                            class="h-100 w-100 object-fit-cover object-position-top">
+                                    @else
+                                        <img src="{{ TEAM_IMAGE }}" alt="">
+                                    @endif
 
-                <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                    <div class="team-card {!! $designClass[$i] !!}">
-                        <div class="team-img-box d-flex justify-content-center align-items-center">
-                            <figure class="mask-image">
-                                 @if(file_exists(TEAM_IMAGE_PATH.$team->image))
-                                    <img src="{{ TEAM_IMAGE_ROOT.$team->image }}" alt="">
-                                @else
-                                    <img src="{{ TEAM_IMAGE }}" alt="">
-                                 @endif
-
-                            </figure>
-                        </div>
-                        <div class="team-member-details mrgn_25b">
-                            <h5 class="text-center font-18 text-grey-5 font-weight-600">{!! $team->name !!}</h5>
-                            <p class="text-center text-grey-2 font-14 mrgn_10b">{!! $team->position !!}</p>
-                            <p class="text-center text-grey-2 font-14">{!! $team->description !!}</p>
-                        </div>
-                        <div class="member-social-icon">
-                            <ul>
-                                <li>
-                                    <a href="{!! $team->linkedin !!}" target="_blank">
-                                        <i class="fa-brands fa-linkedin-in"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                     <a href="{!! $team->mail !!}" target="_blank">
-                                        <i class="fa-regular fa-envelope"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                     <a href="{!! $team->instagram !!}" target="_blank">
-                                        <i class="fa-brands fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                     <a href="{!! $team->twitter !!}" target="_blank">
-                                        <i class="fa-brands fa-x-twitter"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                                </figure>
+                            </div>
+                            <div class="team-member-details mrgn_25b">
+                                <h5 class="text-center font-18 text-grey-5 font-weight-600">{!! $team->name !!}</h5>
+                                <p class="text-center text-grey-2 font-14 mrgn_10b">{!! $team->position !!}</p>
+                                <p class="text-center text-grey-2 font-14">{!! $team->description !!}</p>
+                            </div>
+                            <div class="member-social-icon">
+                                <ul>
+                                    <li>
+                                        <a href="{!! $team->linkedin !!}" target="_blank">
+                                            <i class="fa-brands fa-linkedin-in"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{!! $team->mail !!}" target="_blank">
+                                            <i class="fa-regular fa-envelope"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{!! $team->instagram !!}" target="_blank">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{!! $team->twitter !!}" target="_blank">
+                                            <i class="fa-brands fa-x-twitter"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php $i++; if($i == 8){ $i=0;} ?>
-                  @endforeach
+                    <?php $i++;
+                    if ($i == 8) {
+                        $i = 0;
+                    } ?>
+                @endforeach
 
 
             </div>
@@ -98,10 +101,5 @@
 @stop
 
 @section('scripts')
-    <script>
-
-
-
-
-    </script>
+    <script></script>
 @endsection

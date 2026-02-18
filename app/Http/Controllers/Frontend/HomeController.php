@@ -127,7 +127,7 @@ class HomeController extends Controller
 
     public function team(){
 
-      $teams = Team::active()->orderByDesc('id')->get();
+      $teams = Team::active()->get();
     $settings = Setting::where('page','team')->pluck('value','key')->toArray();
 
         if(isset($settings)){

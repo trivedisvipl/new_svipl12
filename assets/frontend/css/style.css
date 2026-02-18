@@ -1544,3 +1544,6 @@ hr.footer-divider {
     object-fit: cover;
     object-position: center;
 }
+.object-position-top {
+    object-position: top;
+}
