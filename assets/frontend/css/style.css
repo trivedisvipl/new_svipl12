@@ -224,7 +224,7 @@ p {
     color: var(--light-navy-blue);
 }
 .header-menu-links ul .nav-link.active {
-    color: var(--dark-blue);
+    color: var(--orange-3);
 }
 .header-menu-links ul {
     gap: 40px;
@@ -1492,8 +1492,8 @@ hr.footer-divider {
     border-bottom: 2px solid  var(--light-navy-blue);
 }
 .has-dropdown .nav-link.active::before {
-    border-right: 2px solid var(--dark-blue);
-    border-bottom: 2px solid  var(--dark-blue);
+    border-right: 2px solid var(--orange-3);
+    border-bottom: 2px solid  var(--orange-3);
 }
 
 
